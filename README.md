@@ -2,6 +2,8 @@
 
 ![](./assets/banner.png)
 
+[![Tests](https://github.com/ExactCure/datamatrix-decoder/actions/workflows/webpack.yml/badge.svg)](https://github.com/ExactCure/datamatrix-decoder/actions/workflows/webpack.yml)
+
 
 ## Description:
 Decoder for medical datamatrix, this library extract and export the essentials information contain into a DataMatrix.
