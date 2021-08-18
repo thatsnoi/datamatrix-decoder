@@ -1,0 +1,45 @@
+{
+  "name": "datamatrix-decoder",
+  "version": "0.1.0",
+  "description": "Decoder for medical datamatrix",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "deploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExactCure/datamatrix-decoder.git"
+  },
+  "keywords": [
+    "datamatrix",
+    "medicines",
+    "decoder",
+    "medical",
+    "datamatrix-decoder",
+    "datamatrix-decoder-nodejs"
+  ],
+  "author": "Léo Hubert <l.hubert@exactcure.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ExactCure/datamatrix-decoder/issues"
+  },
+  "homepage": "https://github.com/ExactCure/datamatrix-decoder#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.1",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "ts-node": "^10.2.0"
+  }
+}

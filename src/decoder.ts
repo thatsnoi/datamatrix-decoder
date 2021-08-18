@@ -1,5 +1,5 @@
 // Interpret dataMatrix from a string
-function readDataMatrix(dataMatrix: string) {
+export function readDataMatrix(dataMatrix: string) {
 
     const serial = dataMatrix.split('\u001d21');
 
