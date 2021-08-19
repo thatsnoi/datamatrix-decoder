@@ -1,4 +1,4 @@
-import {readDataMatrix} from '../src/decoder';
+import {readDataMatrix} from '../src';
 
 test('classic datamatrix', function() {
 

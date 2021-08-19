@@ -1,48 +1,25 @@
-// Interpret dataMatrix from a string
-export function readDataMatrix(dataMatrix: string) {
+import Medical from './decoders/Medical';
+export default class Decoder {
 
-    const serial = dataMatrix.split('\u001d21');
+    decoders = [
+        new Medical
+    ];
 
-    // HotFix for wrong dataMatrix
-    dataMatrix = dataMatrix.replace(/\u001d/g, '');
+    constructor(private dataMatrix: string) {}
 
-    // Read two first characters to determine type of encoding
-    const type = dataMatrix.substring(0, 2);
-
-    if (type !== '01' && type !== '\x1D0') {
-        throw new Error('Invalid dataMatrix');
+    private getType(): string {
+        return this.dataMatrix.substring(0, 2);
     }
 
-    const gtin = dataMatrix.substring(3, 16);
-    const gtinControl = dataMatrix.substring(16, 18);
+    public decode(): any {
+        const type = this.getType();
 
-    const expiry = dataMatrix.substring(18, 24);
-    const expiryControl = dataMatrix.substring(24, 26);
-
-    let lot: any = null;
-    let serialNumber = null;
-    if (serial && serial.length >= 2) {
-        lot = serial[0].substring(26, serial[0].length);
-        serialNumber = serial[1];
-    } else {
-        lot = dataMatrix.substring(26, dataMatrix.length);
-    }    
-
-    if (gtinControl !== "17" || expiryControl !== "10") {
-        throw new Error('Error IN DataMatrix validation');
-    }
-
-    const expiryYear = `20${expiry.substring(0, 2)}`;
-    const expiryMonth = expiry.substring(2, 4);
-    const expiryDay = expiry.substring(4, 6);
-
-    const parsedExpiry = `${expiryYear}-${expiryMonth}-${expiryDay}`;
-
-    return {
-        gtin: gtin,
-        // format YYYY-MM-DD
-        expiry: parsedExpiry,
-        lot: lot,
-        serial: serialNumber
+        for(let decoder of this.decoders) {
+            if (decoder.type === type) {
+                return decoder.decode(this.dataMatrix);
+            }
+        }
+        
+        throw new Error(`Decoder for type ${type} not found`);
     }
 }
