@@ -1,4 +1,4 @@
-import { parse } from '../src/utils/parser';
+import {parse} from '../src/utils/parser';
 
 test('parse must work proprely with a datamatrix with an SN', function () {
 
@@ -6,25 +6,28 @@ test('parse must work proprely with a datamatrix with an SN', function () {
         [
             {
                 control: '01',
-                length: 14
+                length: 14,
+                mandatory: true
             },
             {
                 control: '17',
-                length: 6
+                length: 6,
+                mandatory: true
             },
             {
                 control: '10',
-                length: null
-            }
-        ],
-        [
+                length: null,
+                mandatory: true
+            },
             {
                 control: '21',
-                length: null
+                length: null,
+                mandatory: false
             },
             {
                 control: '11',
-                length: 4
+                length: 6,
+                mandatory: false
             }
         ]
     );
@@ -43,25 +46,28 @@ test('parse must work proprely with a datamatrix without an SN', function () {
         [
             {
                 control: '01',
-                length: 14
+                length: 14,
+                mandatory: true
             },
             {
                 control: '17',
-                length: 6
+                length: 6,
+                mandatory: true
             },
             {
                 control: '10',
-                length: null
-            }
-        ],
-        [
+                length: null,
+                mandatory: true
+            },
             {
                 control: '21',
-                length: null
+                length: null,
+                mandatory: false
             },
             {
                 control: '11',
-                length: 4
+                length: 6,
+                mandatory: false
             }
         ]
     );
@@ -81,15 +87,18 @@ test('parse with wrong type key must throw an exception', function () {
             [
                 {
                     control: '01',
-                    length: 14
+                    length: 14,
+                    mandatory: true
                 },
                 {
                     control: '17',
-                    length: 6
+                    length: 6,
+                    mandatory: true
                 },
                 {
                     control: '10',
-                    length: null
+                    length: null,
+                    mandatory: true
                 }
             ]
         );
@@ -104,15 +113,18 @@ test('parse with wrong expiry key must throw an exception', function () {
             [
                 {
                     control: '01',
-                    length: 14
+                    length: 14,
+                    mandatory: true
                 },
                 {
                     control: '17',
-                    length: 6
+                    length: 6,
+                    mandatory: true
                 },
                 {
                     control: '10',
-                    length: null
+                    length: null,
+                    mandatory: true
                 }
             ]
         );
@@ -126,15 +138,18 @@ test('parse with wrong lot key must throw an exception', function () {
             [
                 {
                     control: '01',
-                    length: 14
+                    length: 14,
+                    mandatory: true
                 },
                 {
                     control: '17',
-                    length: 6
+                    length: 6,
+                    mandatory: true
                 },
                 {
                     control: '10',
-                    length: null
+                    length: null,
+                    mandatory: true
                 }
             ]
         );

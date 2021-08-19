@@ -1,6 +1,6 @@
 {
   "name": "datamatrix-decoder",
-  "version": "0.2.0-RC1",
+  "version": "0.2.0-RC4",
   "description": "Decoder for medical datamatrix",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

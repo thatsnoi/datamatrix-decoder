@@ -7,4 +7,4 @@ export function readDataMatrix(dataMatrix: string): any {
 }
 
 
-readDataMatrix('01034009219047651723022810LF19684B212X4N367NGV')
+//console.log(readDataMatrix('0103400939322186102105172150442015884117240331'))

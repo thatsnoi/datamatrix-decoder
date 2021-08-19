@@ -30,6 +30,27 @@ test('datamatrix with sn code', function() {
     expect(datamatrix.serial).toBe('106G1VN4CP4YMR');
 })
 
+test('datamatrix with optional SN between expiration date and GTIN', function() {
+
+    const datamatrix = readDataMatrix('010340094988741521014330884264781723103110UMGF');
+
+    expect(datamatrix.gtin).toBe('3400949887415');
+    expect(datamatrix.lot).toBe('UMGF');
+    expect(datamatrix.expiry).toBe('2023-10-31');
+    expect(datamatrix.serial).toBe('01433088426478');
+})
+
+test('datamatrix with manufacturing', function() {
+
+    const datamatrix = readDataMatrix('010340094988741521014330884264781723103110UMGF11200731');
+
+    expect(datamatrix.gtin).toBe('3400949887415');
+    expect(datamatrix.lot).toBe('UMGF');
+    expect(datamatrix.expiry).toBe('2023-10-31');
+    expect(datamatrix.serial).toBe('01433088426478');
+    expect(datamatrix.manufacturing).toBe('2020-07-31');
+})
+
 test('wrong datamatrix', function() {
     expect(() => {
         readDataMatrix('PO2IUOhkhgdiué!6827');
