@@ -1,4 +1,6 @@
 import Medical from './decoders/Medical';
+import {readKey} from "./utils/parser";
+
 export default class Decoder {
 
     decoders = [
@@ -8,7 +10,8 @@ export default class Decoder {
     constructor(private dataMatrix: string) {}
 
     private getType(): string {
-        return this.dataMatrix.substring(0, 2);
+        const {key} = readKey(this.dataMatrix);
+        return key;
     }
 
     public decode(): any {

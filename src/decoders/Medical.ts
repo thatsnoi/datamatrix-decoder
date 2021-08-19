@@ -1,4 +1,5 @@
 import Decoder from '../contracts/decoder';
+import { parse } from '../utils/parser';
 
 export default class Medical implements Decoder {
 
@@ -6,29 +7,37 @@ export default class Medical implements Decoder {
 
     decode(dataMatrix: string) {
 
-        const serial = dataMatrix.split('\u001d21');
+        const result = parse(dataMatrix,
+            [
+                {
+                    control: '01',
+                    length: 14
+                },
+                {
+                    control: '17',
+                    length: 6
+                },
+                {
+                    control: '10',
+                    length: null
+                }
+            ],
+            [
+                {
+                    control: '21',
+                    length: null
+                },
+                {
+                    control: '11',
+                    length: 6
+                }
+            ]
+        );
 
-        // HotFix for wrong dataMatrix
-        dataMatrix = dataMatrix.replace(/\u001d/g, '');
-
-        const gtin = dataMatrix.substring(3, 16);
-        const gtinControl = dataMatrix.substring(16, 18);
-
-        const expiry = dataMatrix.substring(18, 24);
-        const expiryControl = dataMatrix.substring(24, 26);
-
-        let lot: any = null;
-        let serialNumber = null;
-        if (serial && serial.length >= 2) {
-            lot = serial[0].substring(26, serial[0].length);
-            serialNumber = serial[1];
-        } else {
-            lot = dataMatrix.substring(26, dataMatrix.length);
-        }
-
-        if (gtinControl !== "17" || expiryControl !== "10") {
-            throw new Error('Error IN DataMatrix validation');
-        }
+        const gtin = result.get('01').substring(1);
+        const expiry = result.get('17');
+        const lot = result.get('10')
+        const serialNumber = result.get('21')
 
         const expiryYear = `20${expiry.substring(0, 2)}`;
         const expiryMonth = expiry.substring(2, 4);
