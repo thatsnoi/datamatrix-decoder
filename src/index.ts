@@ -5,6 +5,3 @@ export function readDataMatrix(dataMatrix: string): any {
 
     return decoder.decode();
 }
-
-
-//console.log(readDataMatrix('0103400939322186102105172150442015884117240331'))

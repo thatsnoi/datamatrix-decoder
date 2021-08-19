@@ -1,6 +1,6 @@
 {
   "name": "datamatrix-decoder",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Decoder for medical datamatrix",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "deploy": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
