@@ -2,12 +2,13 @@
 export interface Rule {
     control: string;
     length: number | null;
-    first?: boolean;
     mandatory: boolean
+    name: string;
+    callback?: (value: any) => any
 }
 
-export function parse(data: string, rules: Rule[]): Map<string, string> {
-    const result: Map<string, string> = new Map();
+export function parse(data: string, rules: Rule[]): object {
+    const result = {};
     let index = 0;
 
     for (let rule of rules) {
@@ -22,19 +23,22 @@ export function parse(data: string, rules: Rule[]): Map<string, string> {
             }
         }
 
-
         if (!currentRule) {
-            result.set(rule.control, null);
+            result[rule.name] = null;
             continue;
         }
 
         index += currentRule.read;
 
-        result.set(currentRule.key, currentRule.value);
+        if (currentRule.rule.callback) {
+            result[currentRule.rule.name] = currentRule.rule.callback(currentRule.value);
+        } else {
+            result[currentRule.rule.name] = currentRule.value;
+        }
     }
 
     rules.filter(rule => rule.mandatory).map(rule => {
-       if (result.get(rule.control) === null) {
+       if (result[rule.name] === null) {
            throw new Error(`Cannot read this datamatrix, mandatory section ${rule.control} was not found.`);
        }
     });
@@ -55,7 +59,7 @@ export function readRule(rule: Rule, data: string, position: number) {
     newPosition += sectionRead;
 
     return {
-        key: rule.control,
+        rule: rule,
         value: section,
         read: read + sectionRead,
         position: newPosition
@@ -81,8 +85,6 @@ export function readKey(data: string, position?: number) {
         newPosition: startPosition + read
     }
 }
-
-
 
 export function readSection(data: string, position: number, length?: number) {
     let section;
