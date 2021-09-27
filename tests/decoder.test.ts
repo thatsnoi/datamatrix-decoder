@@ -68,3 +68,8 @@ test('bad datamatrix checks', function() {
         readDataMatrix('010340023674791314220507109M63A21146G1VN4CP4YMR');
     }).toThrow();
 })
+
+test('special datamatrix date work great', function () {
+    const datamatrix = readDataMatrix('01034009392206591725030010L386');
+    expect(datamatrix.expiry).toBe('2025-03-31');
+})

@@ -28,7 +28,7 @@ export default class Medical implements Decoder {
                         const expiryMonth = expiry.substring(2, 4);
                         const expiryDay = expiry.substring(4, 6);
 
-                        return `${expiryYear}-${expiryMonth}-${expiryDay}`;
+                        return `${expiryYear}-${expiryMonth}-${expiryDay === '00' ? '31' : expiryDay}`;
                     }
                 },
                 {
@@ -53,7 +53,7 @@ export default class Medical implements Decoder {
                         const manufacturingMonth = manufacturingDate.substring(2, 4);
                         const manufacturingDay = manufacturingDate.substring(4, 6);
 
-                        return `${manufacturingYear}-${manufacturingMonth}-${manufacturingDay}`
+                        return `${manufacturingYear}-${manufacturingMonth}-${manufacturingDay === '00' ? '31' : manufacturingDay}`
                     }
                 }
             ]
