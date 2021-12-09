@@ -1,13 +1,21 @@
 import Decoder from '../contracts/decoder';
 import { parse } from '../utils/parser';
 
+export interface MedicalDatamatrix {
+    gtin: string;
+    expiry: string;
+    lot: string;
+    serial: string|null;
+    manufacturer: string|null;
+}
+
 export default class Medical implements Decoder {
 
     type = '01';
 
-    decode(dataMatrix: string) {
+    decode(dataMatrix: string): MedicalDatamatrix {
 
-        return parse(dataMatrix,
+        return parse<MedicalDatamatrix>(dataMatrix,
             [
                 {
                     control: '01',

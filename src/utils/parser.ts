@@ -7,8 +7,8 @@ export interface Rule {
     callback?: (value: any) => any
 }
 
-export function parse(data: string, rules: Rule[]): object {
-    const result = {};
+export function parse<T>(data: string, rules: Rule[]): T {
+    const result = {} as T;
     let index = 0;
 
     for (let rule of rules) {

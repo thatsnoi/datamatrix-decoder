@@ -1,4 +1,4 @@
-import Medical from './decoders/Medical';
+import Medical, { MedicalDatamatrix } from './decoders/Medical';
 import {readKey} from "./utils/parser";
 
 export default class Decoder {
@@ -14,7 +14,7 @@ export default class Decoder {
         return key;
     }
 
-    public decode(): any {
+    public decode(): MedicalDatamatrix {
         const type = this.getType();
 
         for(let decoder of this.decoders) {
