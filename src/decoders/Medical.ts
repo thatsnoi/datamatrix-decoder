@@ -36,7 +36,7 @@ export default class Medical implements Decoder {
                         const expiryMonth = expiry.substring(2, 4);
                         const expiryDay = expiry.substring(4, 6);
 
-                        return `${expiryYear}-${expiryMonth}-${expiryDay === '00' ? '31' : expiryDay}`;
+                        return `${expiryYear}-${expiryMonth}-${expiryDay === '00' ? '01' : expiryDay}`;
                     }
                 },
                 {

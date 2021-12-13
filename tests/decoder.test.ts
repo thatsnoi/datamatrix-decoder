@@ -71,5 +71,10 @@ test('bad datamatrix checks', function() {
 
 test('special datamatrix date work great', function () {
     const datamatrix = readDataMatrix('01034009392206591725030010L386');
-    expect(datamatrix.expiry).toBe('2025-03-31');
+    expect(datamatrix.expiry).toBe('2025-03-01');
+})
+
+test('special datamatrix date work great', function () {
+    const datamatrix = readDataMatrix('01034009311363851724020010H050');
+    expect(datamatrix.expiry).toBe('2024-02-01');
 })
