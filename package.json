@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ExactCure/datamatrix-decoder.git"
+    "url": "git+https://github.com/thatsnoi/datamatrix-decoder.git"
   },
   "keywords": [
     "datamatrix",
@@ -24,12 +24,11 @@
     "datamatrix-decoder",
     "datamatrix-decoder-nodejs"
   ],
-  "author": "Léo Hubert <l.hubert@exactcure.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ExactCure/datamatrix-decoder/issues"
+    "url": "https://github.com/thatsnoi/datamatrix-decoder/issues"
   },
-  "homepage": "https://github.com/ExactCure/datamatrix-decoder#readme",
+  "homepage": "https://github.com/thatsnoi/datamatrix-decoder#readme",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
