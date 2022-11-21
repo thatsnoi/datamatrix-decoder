@@ -1,24 +1,16 @@
 import Decoder from '../contracts/decoder'
 import { parse } from '../utils/parser'
+import { MedicalDatamatrix } from './Medical'
 
-export interface MedicalDatamatrix {
-  type?: string
-  uid?: string
-  expiry: string
-  lot: string
-  serial: string | null
-  manufacturing: string | null
-}
-
-export default class Medical implements Decoder {
-  type = '01'
-  name = 'GS1'
+export default class Camlog implements Decoder {
+  type = '+E'
+  name = 'Camlog'
 
   decode(dataMatrix: string): MedicalDatamatrix {
     return parse<MedicalDatamatrix>(dataMatrix, [
       {
-        control: '01',
-        length: 14,
+        control: '+E219',
+        length: 10,
         mandatory: true,
         name: 'uid',
         callback: (uid: string) => {
@@ -26,7 +18,7 @@ export default class Medical implements Decoder {
         },
       },
       {
-        control: '17',
+        control: '/$$3',
         length: 6,
         mandatory: true,
         name: 'expiry',
@@ -41,19 +33,13 @@ export default class Medical implements Decoder {
         },
       },
       {
-        control: '10',
-        length: null,
+        control: '0030',
+        length: 6,
         mandatory: true,
         name: 'lot',
       },
       {
-        control: '21',
-        length: null,
-        mandatory: false,
-        name: 'serial',
-      },
-      {
-        control: '11',
+        control: '/16D',
         length: 6,
         mandatory: false,
         name: 'manufacturing',
