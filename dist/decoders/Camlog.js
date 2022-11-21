@@ -12,10 +12,7 @@ class Camlog {
                 control: '+E219',
                 length: 10,
                 mandatory: true,
-                name: 'uid',
-                callback: (uid) => {
-                    return uid.substring(1);
-                },
+                name: 'udi',
             },
             {
                 control: '/$$3',

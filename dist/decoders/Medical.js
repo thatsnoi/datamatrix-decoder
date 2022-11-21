@@ -12,10 +12,7 @@ class Medical {
                 control: '01',
                 length: 14,
                 mandatory: true,
-                name: 'uid',
-                callback: (uid) => {
-                    return uid.substring(1);
-                },
+                name: 'udi',
             },
             {
                 control: '17',

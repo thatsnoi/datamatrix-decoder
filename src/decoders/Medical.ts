@@ -3,7 +3,7 @@ import { parse } from '../utils/parser'
 
 export interface MedicalDatamatrix {
   type?: string
-  uid?: string
+  udi?: string
   expiry: string
   lot: string
   serial: string | null
@@ -20,10 +20,7 @@ export default class Medical implements Decoder {
         control: '01',
         length: 14,
         mandatory: true,
-        name: 'uid',
-        callback: (uid: string) => {
-          return uid.substring(1)
-        },
+        name: 'udi',
       },
       {
         control: '17',

@@ -12,10 +12,7 @@ export default class Camlog implements Decoder {
         control: '+E219',
         length: 10,
         mandatory: true,
-        name: 'uid',
-        callback: (uid: string) => {
-          return uid.substring(1)
-        },
+        name: 'udi',
       },
       {
         control: '/$$3',

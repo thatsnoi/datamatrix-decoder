@@ -6,7 +6,7 @@ test('parse must work proprely with a datamatrix with an SN', function () {
       control: '01',
       length: 14,
       mandatory: true,
-      name: 'uid',
+      name: 'udi',
     },
     {
       control: '17',
@@ -35,7 +35,7 @@ test('parse must work proprely with a datamatrix with an SN', function () {
   ])
 
   expect(result).not.toBeNull()
-  expect(result['uid']).toBe('03400236747913')
+  expect(result['udi']).toBe('03400236747913')
   expect(result['expiry']).toBe('220507')
   expect(result['lot']).toBe('9M63A')
   expect(result['serial']).toBe('106G1VN4CP4YMR')
@@ -48,7 +48,7 @@ test('parse must work proprely with a datamatrix without an SN', function () {
       control: '01',
       length: 14,
       mandatory: true,
-      name: 'uid',
+      name: 'udi',
     },
     {
       control: '17',
@@ -77,7 +77,7 @@ test('parse must work proprely with a datamatrix without an SN', function () {
   ])
 
   expect(result).not.toBeNull()
-  expect(result['uid']).toBe('03400236747913')
+  expect(result['udi']).toBe('03400236747913')
   expect(result['expiry']).toBe('220507')
   expect(result['lot']).toBe('9M63A2342')
   expect(result['serial']).toBeNull()
@@ -90,7 +90,7 @@ test('parsing with callback must pass through the callback to process the value'
       control: '01',
       length: 14,
       mandatory: true,
-      name: 'uid',
+      name: 'udi',
     },
     {
       control: '17',
@@ -104,7 +104,7 @@ test('parsing with callback must pass through the callback to process the value'
   ])
 
   expect(result).not.toBeNull()
-  expect(result['uid']).toBe('03400236747913')
+  expect(result['udi']).toBe('03400236747913')
   expect(result['expiry']).toBe('TEST-220507')
 })
 
@@ -115,7 +115,7 @@ test('parse with wrong type key must throw an exception', function () {
         control: '01',
         length: 14,
         mandatory: true,
-        name: 'uid',
+        name: 'udi',
       },
       {
         control: '17',
@@ -140,7 +140,7 @@ test('parse with wrong expiry key must throw an exception', function () {
         control: '01',
         length: 14,
         mandatory: true,
-        name: 'uid',
+        name: 'udi',
       },
       {
         control: '17',
@@ -165,7 +165,7 @@ test('parse with wrong lot key must throw an exception', function () {
         control: '01',
         length: 14,
         mandatory: true,
-        name: 'uid',
+        name: 'udi',
       },
       {
         control: '17',

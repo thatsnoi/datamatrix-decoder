@@ -1,7 +1,7 @@
 import Decoder from '../contracts/decoder';
 export interface MedicalDatamatrix {
     type?: string;
-    uid?: string;
+    udi?: string;
     expiry: string;
     lot: string;
     serial: string | null;
